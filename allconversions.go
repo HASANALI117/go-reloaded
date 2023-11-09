@@ -5,7 +5,11 @@ import "regexp"
 func AllConversions(inputText string) string {
 	// Apply a series of text transformations in a specific order.
 	inputText = A2An(inputText)
-	inputText = Punct(inputText)
+	temp := ""
+	for temp != inputText {
+		temp = inputText
+		inputText = Punct(inputText)
+	}
 	inputText = Punct2(inputText)
 	inputText = NumberConversion(inputText)
 	inputText = WordConversion(inputText)
@@ -32,7 +36,7 @@ func Punct(str string) string {
 
 // Punct2 adjusts single quotes within text.
 func Punct2(str string) string {
-	return regexp.MustCompile(`'\s[\s\S]+\s'`).ReplaceAllStringFunc(str, func(s string) string {
+	return regexp.MustCompile(`'.*?'`).ReplaceAllStringFunc(str, func(s string) string {
 		// Adjust single quotes within text.
 		return regexp.MustCompile(`^('\s+)|(\s+')$`).ReplaceAllLiteralString(s, "'")
 	})

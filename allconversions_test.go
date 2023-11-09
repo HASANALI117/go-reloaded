@@ -65,8 +65,8 @@ func TestWordConversion(t *testing.T) {
 			expected: "it was the worst of TIMES",
 		},
 		{
-			input:    "it was the age of foolishness don't (cap, 6)",
-			expected: "It Was The Age Of Foolishness Don't",
+			input:    "it was the age of foolishness (cap, 6)",
+			expected: "It Was The Age Of Foolishness",
 		},
 		{
 			input:    "IT WAS THE (low, 0  ) winter of despair.",

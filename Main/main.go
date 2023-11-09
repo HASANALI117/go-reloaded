@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"reboot"
 )
@@ -22,13 +21,13 @@ func main() {
 
 	content, err := os.ReadFile(file)
 	if err != nil {
-		panic(err)
+		fmt.Println("Input file not found")
 	}
 
 	inputText := reboot.AllConversions(string(content))
 
 	err = os.WriteFile(resultFile, []byte(inputText), 0666)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Error while writing to Output file")
 	}
 }
