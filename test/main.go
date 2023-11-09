@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"reboot"
@@ -21,7 +20,7 @@ func main() {
 	file := os.Args[1]
 	resultFile := os.Args[2]
 
-	content, err := ioutil.ReadFile(file)
+	content, err := os.ReadFile(file)
 	if err != nil {
 		panic(err)
 	}
